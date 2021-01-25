@@ -11,9 +11,11 @@ public interface IPersistenciaCliente {
 	
 	public ICliente localizarClientePorCPF(String cpf) throws ClienteNaoEncontradoException;
     
-    public ICliente localizarClientePorCNPJ(String cnpj) throws ClienteNaoEncontradoException;
+        public ICliente localizarClientePorCNPJ(String cnpj) throws ClienteNaoEncontradoException;
+        
+	public void atualizarClienteCPFf(String cpf, ICliente objClienteAtualizar);
+      
+        public void atualizarClienteCNPJ(String cnpj, ICliente objClienteAtualizar);
     
-    public void atualizarClienteCNPJ(String cnpj, ICliente objClienteAtualizar);
-    
-    public void removerCliente(ICliente obj);
+         public void removerCliente(ICliente obj);
 }
