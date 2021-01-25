@@ -98,8 +98,14 @@ public class ClientePessoaJuridica implements ICliente, Serializable{
 
 	@Override
 	public IConta buscarContaInvestimento(String numeroConta) {
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println(contas);
+		IConta conta = new ContaInvestimento(numeroConta);
+		if(contas.contains(conta)) {
+			int index = contas.indexOf(conta);
+			conta = contas.get(index);
+			
+		}
+		return conta;
 	}
 
 	
