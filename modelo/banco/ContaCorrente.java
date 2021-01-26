@@ -27,23 +27,26 @@ public class ContaCorrente implements IConta,Serializable {
 		this.dataAbertura = dataAbertura;
 	}
 	
-	@Override
-	public void transferencia(IConta contaDestino, float valorTransferido) {
+	public void transferencia(IConta contaDestino, float valorTransferido) throws SaldoInsuficienteException{
 		// TODO Auto-generated method stub
 	
 		if(contaDestino instanceof ContaPoupanca) {
 			this.sacar(valorTransferido+(valorTransferido*TAXA_ADMINISTRACAO));
 			contaDestino.depositar(valorTransferido);
 		
+		}else {
+			throw new SaldoInsuficienteException("Saldo insuficiente!");
 		}
-	
 	}
 
 	@Override
-	public void sacar(float valorSacado) {
+	public void sacar(float valorSacado) throws SaldoInsuficienteException{
 		// TODO Auto-generated method stub
 		if(valorSacado > 0 && this.saldo >= (valorSacado + (valorSacado * CUSTO_SACAR_CONTA_CORRENTE))  && this.status == true) {
 			this.saldo -=  (valorSacado + (valorSacado * CUSTO_SACAR_CONTA_CORRENTE));
+			
+		}else if((valorSacado + (valorSacado * CUSTO_SACAR_CONTA_CORRENTE) > saldo)) {
+			throw new SaldoInsuficienteException("Saldo insuficiente!");
 			
 		}
 		
