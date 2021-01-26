@@ -37,18 +37,20 @@ public class ContaPoupanca implements IConta, Serializable{
 			
 			contaDestino.depositar(valorTransferido);
 		
+		}else {
+			throw new SaldoInsuficienteException("Saldo insuficiente!");
+			
 		}
-	
-	}
+		
 
 	@Override
 	public void sacar(float valorSacado) throws SaldoInsuficienteException{
 		// TODO Auto-generated method stub
 		
-		if(valorSacado > 0 && this.saldo >= (valorSacado + (valorSacado * CUSTO_SACAR_CONTA_POUPANÇA))  && this.status == true) {
-			this.saldo -=  (valorSacado + (valorSacado * CUSTO_SACAR_CONTA_POUPANÇA));
+		if(valorSacado > 0 && this.saldo >= (valorSacado + (valorSacado * CUSTO_SACAR_CONTA_POUPANÃ‡A))  && this.status == true) {
+			this.saldo -=  (valorSacado + (valorSacado * CUSTO_SACAR_CONTA_POUPANÃ‡A));
 			
-		}else if(valorSacado + (valorSacado * CUSTO_SACAR_CONTA_POUPANÇA) > saldo) {
+		}else if(valorSacado + (valorSacado * CUSTO_SACAR_CONTA_POUPANÃ‡A) > saldo) {
 			throw new SaldoInsuficienteException("Saldo insuficiente!");
 			
 		}
