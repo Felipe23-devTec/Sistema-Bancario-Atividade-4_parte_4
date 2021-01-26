@@ -41,11 +41,14 @@ public  class ContaSalario implements IConta, Serializable{
 	}
 
 	@Override
-	public void sacar(float valorSacado) {
+	public void sacar(float valorSacado) throws SaldoInsuficienteException{
 		// TODO Auto-generated method stub
 		if(valorSacado <= this.saldo  && this.status == true) {
 			this.saldo -=  valorSacado;
 			
+		}else if(valorSacado + (valorSacado * CUSTO_SACAR_CONTA_SALARIO) > saldo) {
+			throw new SaldoInsuficienteException("Saldo insuficiente!");
+		
 		}
 		
 	}
